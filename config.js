@@ -6,7 +6,7 @@ export const eventData = {
     },
     song: {
       title: "Que suerte tenerte - Fonseca",
-      file: "/Fonseca - Que Suerte Tenerte - Letra (1).mp3"
+      file: "/Fonseca - Que Suerte Tenerte - Letra (1) (online-audio-converter.com).mp3"
     },
     ceremony: {
       ceremonyImage:"/images/ceremon.png",
