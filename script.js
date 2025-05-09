@@ -135,6 +135,7 @@ document.getElementById('dresscode-inspo').innerHTML = `
     const img = document.createElement('img');
     img.src = image;
     img.alt = "Foto galería";
+    img.loading = "lazy"; // 👈 Aquí usas lazy loading
     galleryContainer.appendChild(img);
   });
 
