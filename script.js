@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 //--- Botón para añadir al calendario ---
-function addToCalendar() {
+window.addToCalendar = function () {
   const calendarURL = "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NXU4ZjVtMmtobHNsanI3aXJnN3ZuOWlqZ20gY182OTRhZWE0ODlhN2FkZTJiYzRmYjRiNGExYTE2ZmY3ZDY2ZjAzNzFlMTgwY2I1MzZmM2M3YzE2NGUxZWMwOGIxQGc&tmsrc=c_694aea489a7ade2bc4fb4b4a1a16ff7d66f0371e180cb536f3c7c164e1ec08b1%40group.calendar.google.com";
   window.open(calendarURL, "_blank");
 }
