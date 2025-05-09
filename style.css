@@ -511,8 +511,11 @@
     margin-top: 20px;
   }
   #wishes-container {
-    min-height: 200px; /* Reserva espacio incluso si está vacío */
     transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  #wishes-container.visible {
+    opacity: 1;
   }  
   #show-wishes button {
     margin-top: 10px;

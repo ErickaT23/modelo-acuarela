@@ -307,4 +307,9 @@ function addToCalendar() {
       document.getElementById('wishes-container').classList.toggle('hidden');
     });
   });
+  window.toggleWishes = function () {
+    const wishesContainer = document.getElementById('wishes-container');
+    wishesContainer.classList.toggle('visible');
+  };
+  
   
