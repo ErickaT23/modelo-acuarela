@@ -292,7 +292,7 @@
     font-family: var(--font-body);
   }
   #calendar-button button:hover {
-    background-color: var(--lila);
+    background-color: var(--accent-color);
   }
   /* INVITADO y PASES */
   #guest-name-section {

@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
+//--- Botón para añadir al calendario ---
+function addToCalendar() {
+  const calendarURL = "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NXU4ZjVtMmtobHNsanI3aXJnN3ZuOWlqZ20gY182OTRhZWE0ODlhN2FkZTJiYzRmYjRiNGExYTE2ZmY3ZDY2ZjAzNzFlMTgwY2I1MzZmM2M3YzE2NGUxZWMwOGIxQGc&tmsrc=c_694aea489a7ade2bc4fb4b4a1a16ff7d66f0371e180cb536f3c7c164e1ec08b1%40group.calendar.google.com";
+  window.open(calendarURL, "_blank");
+}
+
+
   // --- Itinerario ---
   // --- Ceremonia ---
   document.getElementById('ceremony-image').src = eventData.ceremony.ceremonyImage;
@@ -171,29 +178,46 @@ modal.addEventListener('click', (e) => {
   document.getElementById('upload-description').innerText = eventData.album.uploadDescription;
   document.getElementById('event-hashtag').innerText = eventData.album.hashtag;
 
-  // --- Buenos deseos ---
-  document.getElementById('show-wishes').addEventListener('click', () => {
-    document.getElementById('wishes-container').classList.toggle('hidden');
-  });
+//BUENOS DESEOS
+// script.js (normal, sin import)
+document.getElementById('send-wish').addEventListener('click', () => {
+  document.getElementById('wish-form').classList.toggle('hidden');
+});
 
-  document.getElementById('send-wish').addEventListener('click', () => {
-    document.getElementById('wish-form').classList.toggle('hidden');
-  });
+document.getElementById('submit-wish').addEventListener('click', () => {
+  const name = document.getElementById('wish-name').value.trim();
+  const message = document.getElementById('wish-message').value.trim();
 
-  document.getElementById('submit-wish').addEventListener('click', () => {
-    const name = document.getElementById('wish-name').value.trim();
-    const message = document.getElementById('wish-message').value.trim();
-  
-    if (name && message) {
-      const wishEntry = document.createElement('p');
-      wishEntry.innerHTML = `<strong>${name}</strong>: ${message}`;
-      document.getElementById('wishes-container').appendChild(wishEntry);
-      document.getElementById('wish-name').value = '';
-      document.getElementById('wish-message').value = '';
-    } else {
-      alert("Por favor, completa ambos campos antes de enviar.");
-    }
-  });
+  if (name && message) {
+    guardarDeseo(name, message)
+      .then(() => {
+        alert("¡Deseo enviado!");
+        document.getElementById('wish-name').value = '';
+        document.getElementById('wish-message').value = '';
+        document.getElementById('wish-form').classList.add('hidden');
+      })
+      .catch(err => console.error("❌ Error al guardar el deseo:", err));
+  } else {
+    alert("Por favor, completá ambos campos.");
+  }
+});
+
+document.getElementById('show-wishes').addEventListener('click', () => {
+  const container = document.getElementById('wishes-container');
+  container.classList.toggle('hidden');
+
+  if (!container.classList.contains('hidden')) {
+    escucharDeseos((lista) => {
+      container.innerHTML = '';
+      lista.forEach(deseo => {
+        const p = document.createElement("p");
+        p.innerHTML = `<strong>${deseo.nombre}</strong>: ${deseo.mensaje}`;
+        container.appendChild(p);
+      });
+    });
+  }
+});
+
 
   // --- No niños ---
   document.getElementById('no-kids-policy').innerText = eventData.noKidsPolicy;
