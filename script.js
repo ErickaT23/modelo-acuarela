@@ -301,3 +301,10 @@ function addToCalendar() {
     window.open(googleCalendarUrl, '_blank');
   }
   
+  //OPTIMIZAR
+  document.getElementById('show-wishes').addEventListener('click', () => {
+    requestIdleCallback(() => {
+      document.getElementById('wishes-container').classList.toggle('hidden');
+    });
+  });
+  

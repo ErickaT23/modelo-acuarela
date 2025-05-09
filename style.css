@@ -510,6 +510,10 @@
   #wishes-container {
     margin-top: 20px;
   }
+  #wishes-container {
+    min-height: 200px; /* Reserva espacio incluso si está vacío */
+    transition: opacity 0.3s ease-in-out;
+  }  
   #show-wishes button {
     margin-top: 10px;
     font-family: var(--font-body);
