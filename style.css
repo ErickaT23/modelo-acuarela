@@ -506,23 +506,7 @@
   }
   #wishes-section p{
     font-size: var(--font-size-text);
-  }
-  #wishes-container {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    display: none;
-    min-height: 200px;
-  }
-  
-  #wishes-container.visible {
-    opacity: 1;
-    display: block;
-  }
-  
-  #wishes-container.hidden {
-    display: none;
-  }
-  
+  }  
   #show-wishes button {
     margin-top: 10px;
     font-family: var(--font-body);
