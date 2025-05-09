@@ -16,6 +16,7 @@
     
     /* Tamaños de letra */
     --font-size-title: 3rem;
+    --font-size-title-small: 2.5rem;
     --font-size-subtitle: 2rem;
     --font-size-text: 1.2rem;
     
@@ -169,6 +170,7 @@
     cursor: pointer;
     transition: background 0.3s;
     font-family: var(--font-body);
+    font-size: var(--font-size-text);
   }
   
   button:hover {
@@ -183,7 +185,52 @@
   #progress-bar {
     width: 80%;
   }
-  
+  /* Estilo para la barra de progreso (input range) */
+#progress-bar {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  background: var(--beige); /* Color pastel base */
+  border-radius: 5px;
+  outline: none;
+  margin: 10px 0;
+}
+
+/* Riel (fondo) */
+#progress-bar::-webkit-slider-runnable-track {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 5px;
+}
+
+/* Pulgarcito (el círculo que se mueve) */
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b5c53;
+  cursor: pointer;
+  margin-top: -4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Para Firefox */
+#progress-bar::-moz-range-track {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 5px;
+}
+
+#progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b5c53;
+  cursor: pointer;
+}
+
   /* SECCIÓN CONTADOR */
   #marriage-announcement {
     text-align: center;
@@ -254,10 +301,19 @@
   #passes-section{
     background-color: #fbf5ef;
   }
+  #guest-name-section p, #passes-section p {
+    font-size: var(--font-size-text);
+  }
   /* ITINERARIO */
   #itinerary-section {
     background: transparent;
     border-radius: 10px;
+  }
+  #itinerary-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #itinerary-section p{
+    font-size: var(--font-size-text);
   }
   #ceremony img {
     width: 100%;
@@ -280,6 +336,12 @@
     background: transparent;
     border-radius: 10px;
   }
+  #gift-section h2 {
+    font-size: var(--font-size-title-small);
+  }
+  #gift-section p {
+    font-size: var(--font-size-text);
+  }
   #gift-section img {
     width: 100%;
     height: auto;
@@ -291,7 +353,7 @@
     padding: 30px 20px;
   }
   .bank-toggle {
-    font-size: 1rem;
+    font-size: var(--font-size-text);
     padding: 12px 24px;
     background-color: var(--accent-color);
     color: white;
@@ -329,6 +391,7 @@
     margin: 6px 0;
     font-size: 1rem;
     color: var(--text-color);
+    font-size: var(--font-size-text);
   }
   /* PLAYLIST */
   #playlist-section {
@@ -344,11 +407,24 @@
   #playlist-button{
     margin-top: 10px;
     font-family: var(--font-body);
+    font-size: var(--font-size-text);
+  }
+  #playlist-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #playlist-section p{
+    font-size: var(--font-size-text);
   }
   /* DRESS CODE */
   #dresscode-section {
     background: transparent;
     border-radius: 10px;
+  }
+  #dresscode-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #dresscode-section p{
+    font-size: var(--font-size-text);
   }
   #dresscode-section img {
     width: 100%;
@@ -359,8 +435,16 @@
   #dresscode-inspo button{
     margin-top: 10px;
     font-family: var(--font-body);
+    font-size: var(--font-size-text);
   }
   /* GALERÍA */
+  #gallery-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #gallery-section h2{
+    font-size: var(--font-size-title-small);
+  }
   #gallery-container {
     display: flex;
     flex-wrap: wrap;
@@ -417,12 +501,19 @@
     background-size: cover;
     background-position: top center;
   }
+  #wishes-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #wishes-section p{
+    font-size: var(--font-size-text);
+  }
   #wishes-container {
     margin-top: 20px;
   }
   #show-wishes button {
     margin-top: 10px;
     font-family: var(--font-body);
+    font-size: var(--font-size-text);
   }
   #wish-form {
     max-width: 600px;
@@ -477,10 +568,22 @@
     background: transparent;
     border-radius: 10px;
   }
+  #no-children-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #no-children-section p{
+    font-size: var(--font-size-text);
+  }
   /* ÁLBUM */
   #album-section {
     background-color: #fbf5ef;
     border-radius: 10px;
+  }
+  #album-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #album-section h3{
+    font-size: var(--font-size-subtitle);
   }
   #qr-album {
     width: 100%;
@@ -492,6 +595,7 @@
   #album-section p{
     margin-top: 0;
     margin-bottom: 30px;
+    font-size: var(--font-size-text);
   }
   #upload-photos{
     font-size: 1rem;
@@ -509,11 +613,18 @@
     font-family: var(--font-body);
     text-decoration: none;
     margin-top: 20px;
+    font-size: var(--font-size-text);
   }
   /* CONFIRMACIÓN */
   #rsvp-section {
     background: transparent;
     border-radius: 10px;
+  }
+  #rsvp-section h2{
+    font-size: var(--font-size-title-small);
+  }
+  #rsvp-section p{
+    font-size: var(--font-size-text);
   }
   #rsvp-section img {
     width: 100%;
@@ -535,6 +646,9 @@
   #final-message-section {
     background-color: #fbf5ef;
     margin-top: -10px;
+  }
+  #final-message-section p{
+    font-size: var(--font-size-subtitle);
   }
   
   /* FOOTER */
