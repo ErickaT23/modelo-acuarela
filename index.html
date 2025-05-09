@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isa & Roberto</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="config.js" defer></script>
+  <script type="module" src="loads.js" defer></script> <!-- primero loads -->
+  <script type="module" src="script.js" defer></script>
+  <script type="module" src="database.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Give+You+Glory&family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- SOBRE -->
+    <section id="envelope">
+        <div id="envelope-top"></div>
+         <div id="seal">
+            <h2>I & R</h2> <!-- Tus iniciales -->
+        </div>
+        <div id="envelope-bottom"></div>
+    </section>
+  
+    <div class="main-content hidden">
+    <!-- Foto inicial -->
+    <section id="hero">
+      <img id="hero-image" alt="Foto inicial de la pareja">
+      <div class="hero-text">
+        <h1 id="couple-names"></h1>
+        <h2 id="wedding-date"></h2>
+      </div>
+    </section>
+
+    <!-- Sección de música -->
+    <section id="music-section">
+      <h2 id="song-title"></h2>
+      <button id="playPauseButton">Play</button>
+      <audio id="audioPlayer" loop preload="auto"></audio>
+      <div id="progress-container">
+        <input id="progress-bar" type="range" value="0" min="0" max="100">
+        <div class="time-display">
+          <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de contador de fecha regresiva -->
+    <section id="countdown-section">
+        <div id="marriage-announcement" class="fade-in-element">
+            <h2>¡Nos casamos!</h2>
+            <p>El día en que nuestros corazones se unen para siempre ha llegado. Compartan nuestra alegría en nuestra boda.</p>
+          </div>          
+      <div id="countdown">
+        <div class="unit">
+          <span id="days" class="number">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="unit">
+          <span id="hours" class="number">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="unit">
+          <span id="minutes" class="number">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="unit">
+          <span id="seconds" class="number">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+
+      <div id="calendar-button" class="fade-in-element">
+        <button onclick="addToCalendar()">Agregar al calendario</button>
+      </div>
+      
+    </section>
+
+    <!-- Nombre del invitado -->
+    <section id="guest-name-section">
+      <p id="guest-name"></p>
+    </section>
+
+    <!-- Cantidad de pases -->
+    <section id="passes-section">
+      <p>Invitación válida por <span id="passes"></span> pases.</p>
+    </section>
+
+    <!-- Itinerario Ceremonia y Recepción -->
+    <section id="itinerary-section">
+      <div id="ceremony">
+        <img id="ceremony-image" alt="ceremony">
+        <h2>Ceremonia</h2>
+        <p id="ceremony-place"></p>
+        <p id="ceremony-address"></p>
+        <p><span id="ceremony-date"></span> | <span id="ceremony-time"></span></p>
+        <button id="ceremony-map">Cómo llegar</button>
+      </div>
+      <div id="reception">
+        <img id="reception-image" alt="reception">
+        <h2>Recepción</h2>
+        <p id="reception-place"></p>
+        <p id="reception-address"></p>
+        <p><span id="reception-date"></span> | <span id="reception-time"></span></p>
+        <button id="reception-map">Cómo llegar</button>
+      </div>
+    </section>
+
+    <!-- Lluvia de sobres -->
+    <section id="gift-section">
+        <img id="gift-image" alt="gift">
+      <h2>Lluvia de Sobres</h2>
+      <p id="abroad-gift-message"></p>
+      <div id="bank-details"></div>
+      <p id="abroad-gift-message"></p>
+    </section>
+
+    <!-- Playlist -->
+    <section id="playlist-section">
+      <img id="playlist-image" alt="playlist">    
+      <h2>Playlist</h2>
+      <p id="playlist-description"></p>
+      <button id="playlist-button">Abrir Playlist</button>
+    </section>
+
+    <!-- Dress code -->
+    <section id="dresscode-section">
+        <img id="dresscode-image" alt="dresscode">
+         <h2>Dress Code</h2>
+
+      <div id="dresscode-details">
+          <p>Traje formal, los colores Blanco, Ivory, Amarillo y Beige quedan reservados.</p>
+      </div>
+
+        <div id="dresscode-inspo" class="inspo-buttons">
+          <button onclick="window.open('https://www.pinterest.com/search/pins/?q=Vestidos%20invitadas%20de%20boda%20de%20día', '_blank')">Inspiración para Mujeres</button>
+          <button onclick="window.open('https://www.pinterest.com/search/pins/?q=Traje%20formal%20de%20hombres%20invitados%20a%20boda', '_blank')">Inspiración para Hombres</button>
+        </div>
+    </section>
+
+    <!-- Galería de fotos -->
+    <section id="gallery-section">
+      <h2>Galería de Fotos</h2>
+      <div id="gallery-container"></div>
+    </section>
+        <!-- Modal de imagen ampliada -->
+        <div id="gallery-modal" class="modal hidden">
+          <span id="modal-close">&times;</span>
+          <img id="modal-image" src="" alt="Foto ampliada">
+        </div>
+
+    <!-- Buenos deseos -->
+    <section id="wishes-section">
+      <h2>Buenos Deseos</h2>
+      <button id="show-wishes">Ver Buenos Deseos</button>
+      <div id="wishes-container"></div>
+      <button id="send-wish">Enviar Buenos Deseos</button>
+      <div id="wish-form" class="hidden">
+        <input id="wish-name" type="text" placeholder="Tu nombre">
+        <textarea id="wish-message" placeholder="Tu mensaje"></textarea>
+        <button id="submit-wish">Enviar</button>
+      </div>
+    </section>
+
+    <!-- No niños -->
+    <section id="no-children-section">
+      <h2>Solo adultos</h2>
+      <p id="no-kids-policy"></p>
+    </section>
+
+    <!-- Álbum -->
+    <section id="album-section">
+      <h2>¡Hagamos recuerdos!</h2>
+      <h3 id="event-hashtag"></h3>
+      <img id="qr-album" alt="Código QR para álbum">
+      <p id="upload-description"></p>
+      <a id="upload-photos" target="_blank">Subir Fotos</a>
+    </section>
+
+    <!-- Confirmación -->
+    <section id="rsvp-section">
+       <img id="rsvp-image" alt="rsvp">
+      <h2>Confirmación</h2>
+      <p id="rsvp-message"></p>
+      <button id="whatsapp-confirm">Confirmar por WhatsApp</button>
+      <button id="email-confirm">Confirmar por Email</button>
+    </section>
+
+    <!-- Foto final -->
+    <section id="final-photo-section">
+      <img id="final-photo" alt="Foto final">
+    </section>
+
+    <!-- Frase final -->
+    <section id="final-message-section">
+      <p id="final-message"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div id="social-icons"></div>
+      <div class="footer-logo">
+        <img id="footer-logo" alt="Logo de la empresa">
+      </div>
+    </footer>    
+
+  </div>
+
+</body>
+</html>
+
+

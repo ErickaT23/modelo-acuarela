@@ -1,0 +1,624 @@
+/* VARIABLES GLOBALES */
+:root {
+    /* Colores base estilo acuarela */
+    --background-color: white;
+    --beige: #f7e1d0;
+    --rosa: #f9d5d3;
+    --amarillo: #fff7cc;
+    --verde: #d5ead8;
+    --lila: #e9d4ef;
+    --text-color: #6b5c53;
+    --accent-color: #c6a994;
+    
+    /* Tipografías */
+    --font-title: 'The Girl Next Door', cursive;
+    --font-body: 'Give You Glory', cursive;
+    
+    /* Tamaños de letra */
+    --font-size-title: 3rem;
+    --font-size-subtitle: 2rem;
+    --font-size-text: 1.2rem;
+    
+    /* Otros */
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* RESET BÁSICO */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: var(--background-color);
+    font-family: var(--font-body);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+  
+  /* SECCIONES GENERALES */
+  section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  h1, h2, h3 {
+    font-family: var(--font-title);
+    color: var(--text-color);
+  }
+  
+  h1 {
+    font-size: var(--font-size-title);
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: var(--font-size-subtitle);
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: var(--font-size-text);
+    margin-bottom: 10px;
+  }
+
+  /* SOBRE */
+#envelope {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--background-color);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+  }
+  #envelope-top, #envelope-bottom {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 1s ease;
+  }
+  #envelope-top {
+    background-image: url('/images/sobre.png'); /* Usa tu imagen */
+    background-position: top center;
+  }
+  #envelope-bottom {
+    background-image: url('/images/sobre.png'); /* Usa tu imagen */
+    background-position: bottom center;
+  }
+  #seal {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 2;
+  }
+  #seal h2{
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  /* Estado de apertura */
+  .open #envelope-top {
+    transform: translateY(-100%);
+  }
+  .open #envelope-bottom {
+    transform: translateY(100%);
+  }
+  /* Ocultar cuando abre */
+  .hidden {
+    display: none !important;
+  }
+  /* HERO (Foto inicial) */
+  #hero {
+    position: relative;
+  }
+  #hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    width: 300px;
+    height: auto;
+  }
+  .hero-text h1 {
+    margin-top: -250px;
+  }
+  .hero-text h2{
+    margin-top: -30px;
+  }
+  /* SECCIÓN MÚSICA */
+  #music-section {
+    background-image: url(/images/82.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+  }
+  
+  button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+  }
+  
+  button:hover {
+    background: var(--text-color);
+  }
+  
+  /* PROGRESO DE MÚSICA */
+  #progress-container {
+    margin-top: 20px;
+  }
+  
+  #progress-bar {
+    width: 80%;
+  }
+  
+  /* SECCIÓN CONTADOR */
+  #marriage-announcement {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+  #marriage-announcement h2 {
+    font-family: var(--font-title);
+    font-size: var(--font-size-title);
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  #marriage-announcement p {
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  .unit {
+    background: var(transparent);
+    padding: 0;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+  }
+  .number {
+    font-size: 1.5rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  #calendar-button {
+    text-align: center;
+    margin-top: 30px;
+  }
+  #calendar-button button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background 0.3s;
+    font-family: var(--font-body);
+  }
+  #calendar-button button:hover {
+    background-color: var(--lila);
+  }
+  /* INVITADO y PASES */
+  #guest-name-section {
+    background-color: #f7eae1;
+  }
+  #passes-section{
+    background-color: #fbf5ef;
+  }
+  /* ITINERARIO */
+  #itinerary-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #ceremony img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #reception img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #itinerary-section button {
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  /* LLUVIA DE SOBRES */
+  #gift-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #gift-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #gift-section {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .bank-toggle {
+    font-size: 1rem;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+    margin: 10px auto;
+  }
+  .bank-toggle:hover {
+    background-color: var(--text-color);
+  }
+  .bank-details {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    padding: 0 15px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .bank-details.open {
+    max-height: 300px; /* ajusta según el contenido */
+    opacity: 1;
+    padding: 15px;
+  }
+  .bank-details p {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  /* PLAYLIST */
+  #playlist-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #playlist-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #playlist-button{
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  /* DRESS CODE */
+  #dresscode-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #dresscode-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  #dresscode-inspo button{
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  /* GALERÍA */
+  #gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  #gallery-container img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  #gallery-container img:hover {
+    transform: scale(1.05);
+  }
+  /* Modal */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+#modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 60px;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+.hidden {
+  display: none !important;
+}
+  /* BUENOS DESEOS */
+  #wishes-section {
+    background-image: url(/images/82.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+  }
+  #wishes-container {
+    margin-top: 20px;
+  }
+  #show-wishes button {
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  #wish-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  #wish-form input,
+  #wish-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: var(--font-body, Arial, sans-serif);
+    font-size: 1rem;
+    background-color: #fff;
+    color: #6b5c53;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  #wish-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  #wish-form button {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+    font-family: var(--font-body, Arial, sans-serif);
+  }
+  
+  #wish-form button:hover {
+    background-color: var(--text-color);
+  }
+  
+  /* NO NIÑOS */
+  #no-children-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  /* ÁLBUM */
+  #album-section {
+    background-color: #fbf5ef;
+    border-radius: 10px;
+  }
+  #qr-album {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  #album-section p{
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  #upload-photos{
+    font-size: 1rem;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  /* CONFIRMACIÓN */
+  #rsvp-section {
+    background: transparent;
+    border-radius: 10px;
+  }
+  #rsvp-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  /* FOTO FINAL */
+  #final-photo-section{
+    padding: 0;
+    margin-bottom: 0;
+  }
+  #final-photo {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* FRASE FINAL */
+  #final-message-section {
+    background-color: #fbf5ef;
+    margin-top: -10px;
+  }
+  
+  /* FOOTER */
+  footer {
+    background: var(--text-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer img {
+    width: 100px;
+    margin-top: 10px;
+  }
+  
+  #social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+  }
+
+  #footer {
+    background-color: #635448;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  #social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  #social-icons a {
+    color: white;
+    font-size: 2.5rem;
+    transition: color 0.3s;
+  }
+  
+  #social-icons a:hover {
+    color: white;
+  }
+  
+  .footer-logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  
+  /* ANIMACIONES SCROLL */
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+    
+    #gallery-container img {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .unit {
+      width: 75px;
+      height: 75px;
+    }
+  }
+  
