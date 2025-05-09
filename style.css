@@ -508,14 +508,18 @@
     font-size: var(--font-size-text);
   }
   #wishes-container {
-    margin-top: 20px;
-  }
-  #wishes-container {
-    transition: opacity 0.3s ease-in-out;
     opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: none;
   }
+  
   #wishes-container.visible {
     opacity: 1;
+    display: block;
+  }
+
+  #wishes-container.hidden {
+    display: none;
   }  
   #show-wishes button {
     margin-top: 10px;

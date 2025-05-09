@@ -37,37 +37,3 @@ window.escucharDeseos = function(callback) {
   });
 };
 
-window.toggleWishes = function () {
-  const wishesDiv = document.getElementById("wishes-container");
-
-  // Si ya está visible, ocultamos
-  if (wishesDiv.classList.contains("visible")) {
-    wishesDiv.classList.remove("visible");
-    wishesDiv.classList.add("hidden");
-    return;
-  }
-
-  // Si aún no se han cargado los deseos (evitar cargar cada vez)
-  if (!wishesDiv.dataset.loaded) {
-    onValue(ref(db, "buenos-deseos/"), (snapshot) => {
-      requestIdleCallback(() => {
-        wishesDiv.innerHTML = ""; // Limpiar antes de actualizar
-
-        snapshot.forEach((childSnapshot) => {
-          const wish = childSnapshot.val();
-          const wishElement = document.createElement("p");
-          wishElement.innerHTML = `<strong>${wish.nombre}:</strong> ${wish.mensaje}`;
-          wishesDiv.appendChild(wishElement);
-        });
-
-        wishesDiv.dataset.loaded = "true"; // Marcar como ya cargado
-        wishesDiv.classList.remove("hidden");
-        wishesDiv.classList.add("visible");
-      });
-    });
-  } else {
-    // Si ya están cargados, solo mostrar
-    wishesDiv.classList.remove("hidden");
-    wishesDiv.classList.add("visible");
-  }
-};
