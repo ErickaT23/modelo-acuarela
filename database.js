@@ -36,4 +36,36 @@ window.escucharDeseos = function(callback) {
     callback(lista);
   });
 };
+window.toggleWishes = function () {
+  const wishesDiv = document.getElementById("wishes-container");
+
+  if (wishesDiv.classList.contains("visible")) {
+    wishesDiv.classList.remove("visible");
+    wishesDiv.classList.add("hidden");
+    return;
+  }
+
+  if (wishesDiv.dataset.loaded === "true") {
+    wishesDiv.classList.remove("hidden");
+    wishesDiv.classList.add("visible");
+    return;
+  }
+
+  onValue(ref(db, "buenos-deseos/"), (snapshot) => {
+    requestIdleCallback(() => {
+      wishesDiv.innerHTML = "";
+
+      snapshot.forEach((childSnapshot) => {
+        const wish = childSnapshot.val();
+        const wishElement = document.createElement("p");
+        wishElement.innerHTML = `<strong>${wish.nombre}:</strong> ${wish.mensaje}`;
+        wishesDiv.appendChild(wishElement);
+      });
+
+      wishesDiv.dataset.loaded = "true";
+      wishesDiv.classList.remove("hidden");
+      wishesDiv.classList.add("visible");
+    });
+  });
+};
 
